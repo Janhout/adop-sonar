@@ -7,6 +7,8 @@ services:
       - "9000:9000"
     depends_on: 
       - "mysql"
+    links:
+      - "mysql"
     environment:
       - ADOP_LDAP_ENABLED=false
       - SONARQUBE_JDBC_USERNAME=sonar
@@ -20,5 +22,3 @@ services:
       - MYSQL_PASSWORD=sonar
       - MYSQL_DATABASE=sonar
       - MYSQL_ROOT_PASSWORD=sonar
-    ports:
-     - "3306:3306"
