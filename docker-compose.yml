@@ -4,21 +4,22 @@ services:
     build: .
     restart: always 
     ports:
-      - "9000:9000"
+      - '9000:9000'
     depends_on: 
-      - "mysql"
+      - 'mysql'
     links:
-      - "mysql"
+      - 'mysql'
     environment:
-      - ADOP_LDAP_ENABLED=false
-      - SONARQUBE_JDBC_USERNAME=sonar
-      - SONARQUBE_JDBC_PASSWORD=sonar
-      - SONARQUBE_JDBC_URL=jdbc:mysql://mysql:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true 
+      ADOP_LDAP_ENABLED: 'false'
+      SONARQUBE_JDBC_USERNAME: 'sonar'
+      SONARQUBE_JDBC_PASSWORD: 'sonar'
+      SONARQUBE_JDBC_URL: 'jdbc:mysql://mysql:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true'
+
   mysql:
-    image: mysql:5.7
+    image: mysql:5.7.19
     restart: always
     environment:
-      - MYSQL_USER=sonar
-      - MYSQL_PASSWORD=sonar
-      - MYSQL_DATABASE=sonar
-      - MYSQL_ROOT_PASSWORD=sonar
+      MYSQL_USER: 'sonar'
+      MYSQL_PASSWORD: 'sonar'
+      MYSQL_DATABASE: 'sonar'
+      MYSQL_ROOT_PASSWORD: 'sonar'
